@@ -3,11 +3,10 @@ eureka:
     service-url:
       defaultZone: http://localhost:8010/eureka/
      
- ---
+---
 spring:
   profiles: lab-4-subject
 words: I,You,He,She,It
-
 ---
 spring:
   profiles: lab-4-verb
