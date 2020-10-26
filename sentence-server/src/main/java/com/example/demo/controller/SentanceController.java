@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,7 +12,7 @@ import com.example.demo.service.SentenceService;
 public class SentanceController {
 	private final SentenceService sentenceService;
 		
-		public SentanceController(SentenceService sentenceService) {
+		public SentanceController(@Qualifier("feignClient") SentenceService sentenceService) {
 		super();
 		this.sentenceService = sentenceService;
 	}
