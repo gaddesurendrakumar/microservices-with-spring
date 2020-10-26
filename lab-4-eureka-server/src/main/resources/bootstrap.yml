@@ -1,3 +1,10 @@
 spring:
   application:
     name: lab-4-eureka-server
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${random.value}}
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch-registry: false

@@ -1,0 +1,16 @@
+
+---
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          default-label: main
+          uri: https://github.com/gaddesurendrakumar/microservices-with-spring.git
+          searchPaths: ConfigData
+        # "native" is used when the native profile is active, for local tests with a classpath repo:
+        native:
+          searchLocations: classpath:offline-repository/
+      
+server:
+  port: 8001

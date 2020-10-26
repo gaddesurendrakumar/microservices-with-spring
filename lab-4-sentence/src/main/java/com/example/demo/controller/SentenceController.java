@@ -15,10 +15,12 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class SentenceController {
 	
-	private final DiscoveryClient discoveryClient;
+	//private final DiscoveryClient discoveryClient;
+	private final RestTemplate template;
 	
-	SentenceController(DiscoveryClient discoveryClient){
-		this.discoveryClient = discoveryClient;
+	SentenceController(DiscoveryClient discoveryClient,RestTemplate template){
+		//this.discoveryClient = discoveryClient;
+		this.template = template;
 	}
 	
 	@GetMapping("/sentence")
@@ -33,13 +35,14 @@ public class SentenceController {
 	  }
 	  
 	  public String getWord(String service) {
-	    List<ServiceInstance> list = discoveryClient.getInstances(service);
-	    if (list != null && list.size() > 0 ) {
-	      URI uri = list.get(0).getUri();
-	  if (uri !=null ) {
-	    return (new RestTemplate()).getForObject(uri,String.class);
-	  }
-	    }
-	    return null;
+	  //  List<ServiceInstance> list = discoveryClient.getInstances(service);
+	   // if (list != null && list.size() > 0 ) {
+	     // URI uri = list.get(0).getUri();
+	  //if (uri !=null ) {
+	    //return (new RestTemplate()).getForObject(uri,String.class);
+		  return template.getForObject("http://" + service, String.class);
+	 // }
+	   // }
+	    //return null;
 	  }
 }
