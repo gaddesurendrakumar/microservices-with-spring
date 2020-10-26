@@ -12,7 +12,7 @@ import com.example.demo.service.SentenceService;
 public class SentanceController {
 	private final SentenceService sentenceService;
 		
-		public SentanceController(@Qualifier("feignClient") SentenceService sentenceService) {
+		public SentanceController(@Qualifier("feignHystrixClient") SentenceService sentenceService) {
 		super();
 		this.sentenceService = sentenceService;
 	}
